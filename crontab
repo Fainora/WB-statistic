@@ -1,0 +1,1 @@
+0 0 * * * cd /var/www && php artisan wb:importdata >> /dev/stdout 2>&1
