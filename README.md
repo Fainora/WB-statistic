@@ -8,8 +8,8 @@
 6. Устанавливаем composesr: composer install
 7. Генерируем ключ: php artisan key:generate
 8. Запускаем миграции: php artisan migrate
-9. Команда для проверки и добавления данных (ежедневно):
-php artisan wb:importdata > /dev/null 2>&1 &
+9. Команда для проверки и добавления данных (ежедневно):  
+php artisan schedule:work > /dev/null 2>&1 & 
 
 Просмотр логов: storage/logs/laravel.log  
 Для запуска Docker: docker-compose up -d  
