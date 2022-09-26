@@ -11,7 +11,7 @@
 9. Команда для проверки и добавления данных (ежедневно):  
 php artisan schedule:work > /dev/null 2>&1 & 
 
-Основное действие происходит в app/Http/Controllers/WB/wbStatisticController.php  
+Основное действие происходит в app/Jobs/wbUpload.php
 
 Просмотр логов: storage/logs/laravel.log  
 Для запуска Docker: docker-compose up -d  

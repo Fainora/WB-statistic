@@ -11,28 +11,11 @@ use Illuminate\Support\Facades\Log;
 class wbStatisticController extends Controller
 {
     public $dateFrom = '2022-06-01T00:00:00Z';
+    private ?string $apiUrl;
 
     public function __construct()
     {
        $this->apiUrl = env("API_URL");
-       $this->apiKey = env("API_TOKEN");
-    }
-
-    //Данную функцию можно в Job (queue) запихнуть
-    public function getWbStatistic() {
-        $dateTo = Carbon::now()->toDateString();
-        $data['key'] = $this->apiKey;
-
-        app(wbGetDataController::class)->getIncomes($data, $this->dateFrom);
-        app(wbGetDataController::class)->getStocks($data, $this->dateFrom);
-        app(wbGetDataController::class)->getOrders($data, $this->dateFrom);
-        app(wbGetDataController::class)->getSales($data, $this->dateFrom);
-        app(wbGetDataController::class)->getExciseGoods($data, $this->dateFrom);
-
-        $data['limit'] = 1000;
-        $data['rrdid'] = 0;
-        $data['dateTo'] = $dateTo;
-        app(wbGetDataController::class)->getReportDetailByPeriod($data, $this->dateFrom);
     }
 
     private function getApiUrl($data, $path) {
